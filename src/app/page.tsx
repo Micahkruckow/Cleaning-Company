@@ -142,11 +142,11 @@ export default function HomePage() {
               and backed by a 100% satisfaction guarantee.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="h-12 px-8 text-base" render={<Link href="/contact" />}>
+              <Button size="lg" className="h-12 px-8 text-base" nativeButton={false} render={<Link href="/contact" />}>
                 Get a Free Quote
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="h-12 px-8 text-base" render={<Link href="/services" />}>
+              <Button size="lg" variant="outline" className="h-12 px-8 text-base" nativeButton={false} render={<Link href="/services" />}>
                 See All Services
               </Button>
             </div>
@@ -190,7 +190,7 @@ export default function HomePage() {
                   <Separator />
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-primary text-lg">{s.price}</span>
-                    <Button variant="outline" size="sm" render={<Link href={s.href} />}>
+                    <Button variant="outline" size="sm" nativeButton={false} render={<Link href={s.href} />}>
                       Learn more <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
                   </div>
@@ -294,7 +294,7 @@ export default function HomePage() {
                 size="lg"
                 variant="secondary"
                 className="h-12 px-8 text-base"
-                render={<Link href="/contact" />}
+                nativeButton={false} render={<Link href="/contact" />}
               >
                 Book Now — It&apos;s Free
                 <ArrowRight className="ml-1 h-4 w-4" />
@@ -303,7 +303,7 @@ export default function HomePage() {
                 size="lg"
                 variant="ghost"
                 className="h-12 px-8 text-base text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                render={<Link href={`tel:${siteConfig.phone}`} />}
+                nativeButton={false} render={<Link href={`tel:${siteConfig.phone}`} />}
               >
                 {siteConfig.phone}
               </Button>

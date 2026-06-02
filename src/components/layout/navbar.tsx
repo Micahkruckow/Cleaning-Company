@@ -32,11 +32,10 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          {/* base-ui Button: use render prop instead of asChild */}
-          <Button variant="ghost" render={<Link href="/login" />}>
+          <Button variant="ghost" nativeButton={false} render={<Link href="/login" />}>
             Log in
           </Button>
-          <Button render={<Link href="/contact" />}>
+          <Button nativeButton={false} render={<Link href="/contact" />}>
             Get a Quote
           </Button>
         </div>
@@ -61,7 +60,7 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Button render={<Link href="/contact" onClick={() => setOpen(false)} />}>
+              <Button nativeButton={false} render={<Link href="/contact" onClick={() => setOpen(false)} />}>
                 Get a Quote
               </Button>
             </div>
