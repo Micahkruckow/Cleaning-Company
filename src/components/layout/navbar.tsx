@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { siteConfig } from "@/config/site";
@@ -32,37 +32,37 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" asChild>
-            <Link href="/login">Log in</Link>
+          {/* base-ui Button: use render prop instead of asChild */}
+          <Button variant="ghost" render={<Link href="/login" />}>
+            Log in
           </Button>
-          <Button asChild>
-            <Link href="/contact">Get a Quote</Link>
+          <Button render={<Link href="/contact" />}>
+            Get a Quote
           </Button>
         </div>
 
-        {/* Mobile nav */}
+        {/* Mobile nav — SheetTrigger renders its own button; use render prop */}
         <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-            </Button>
+          <SheetTrigger
+            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+          >
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Open menu</span>
           </SheetTrigger>
           <SheetContent side="right">
-            <div className="flex flex-col gap-6 mt-8">
+            <div className="flex flex-col gap-6 mt-8 p-2">
               {siteConfig.nav.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-lg font-medium"
+                  className="text-lg font-medium hover:text-primary transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Button asChild>
-                <Link href="/contact" onClick={() => setOpen(false)}>
-                  Get a Quote
-                </Link>
+              <Button render={<Link href="/contact" onClick={() => setOpen(false)} />}>
+                Get a Quote
               </Button>
             </div>
           </SheetContent>
